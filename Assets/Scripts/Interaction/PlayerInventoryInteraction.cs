@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 
@@ -14,7 +15,25 @@ public class PlayerInventoryInteraction : MonoBehaviour
             var itemType = inventoryItem.PickUp();
             InventoryData.AddItem(itemType);
         }
+    }
 
-        hintText.SetText(PossiblyEvent ? "Press E to interact" : "");
+    private void Update()
+    {
+        hintText.SetText(PossiblyEvent? "Press E to interact" : "");
+
+        if (PossiblyEvent)
+        {
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                StartPossiblyEvent();
+            }       
+        }
+    }
+
+    private void StartPossiblyEvent()
+    {
+        print("Event activated" + PossiblyEvent);
+
+        PossiblyEvent.Activate();
     }
 }

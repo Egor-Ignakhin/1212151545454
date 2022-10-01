@@ -10,6 +10,7 @@ public class GameEventTrigger : MonoBehaviour
         if (col.TryGetComponent(out PlayerInventoryInteraction playerInventoryInteraction))
         {
             playerInventoryInteraction.PossiblyEvent = gameEvent;
+
         }
     }
     
