@@ -2,11 +2,11 @@ using System;
 
 public static class EventsCounter
 {
-    private static int currentEventIndex = 0;
+    private static int currentEventIndex;
 
     private const int maxEventIndex = 1;
     public static event Action LastEventCompleted;
-    
+
     public static int CurrentEventIndex
     {
         get => currentEventIndex;

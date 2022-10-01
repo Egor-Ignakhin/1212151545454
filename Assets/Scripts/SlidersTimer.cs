@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,7 +9,7 @@ public class SlidersTimer : MonoBehaviour
     private bool stopTimer;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         stopTimer = false;
         timerSlider.maxValue = gameTime;
@@ -19,22 +17,18 @@ public class SlidersTimer : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        float time = gameTime = Time.time;
-        int minutes = Mathf.FloorToInt(time / 60);
-        int seconds = Mathf.FloorToInt(time - minutes / 60);
-        string textTime = string.Format("{0:0}:{1:00}", minutes, seconds);
+        var time = gameTime = Time.time;
+        var minutes = Mathf.FloorToInt(time / 60);
+        var seconds = Mathf.FloorToInt(time - minutes / 60);
+        var textTime = string.Format("{0:0}:{1:00}", minutes, seconds);
 
-        if (time <= 0)
-        {
-            stopTimer = true;
-        }
+        if (time <= 0) stopTimer = true;
         if (stopTimer == false)
         {
             timerText.text = textTime;
             timerSlider.value = time;
         }
     }
-
 }

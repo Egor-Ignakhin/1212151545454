@@ -1,5 +1,3 @@
-﻿using UnityEngine;
-
-public class OpenWindowEventTrigger : GameEventTrigger
+﻿public class OpenWindowEventTrigger : GameEventTrigger
 {
 }

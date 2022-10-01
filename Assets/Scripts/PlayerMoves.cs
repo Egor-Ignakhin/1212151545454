@@ -54,8 +54,8 @@ public class PlayerMoves : MonoBehaviour
 
             if (direction.magnitude > 1)
                 direction = direction.normalized;
-            
-            transform.position += (Vector3) direction * (speed * Time.deltaTime);
+
+            transform.position += (Vector3)direction * (speed * Time.deltaTime);
             anim.SetInteger("Pose", 2);
             gameObject.transform.localScale = new Vector3(1, 1, 1);
         }

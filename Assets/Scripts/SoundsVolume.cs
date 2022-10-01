@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SoundsVolume : MonoBehaviour
@@ -8,16 +6,17 @@ public class SoundsVolume : MonoBehaviour
     private float musicVolume = 1f;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         audioSrc = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         audioSrc.volume = musicVolume;
     }
+
     public void SetVolume(float vol)
     {
         musicVolume = vol;

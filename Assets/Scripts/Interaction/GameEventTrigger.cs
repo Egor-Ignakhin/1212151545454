@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class GameEventTrigger : MonoBehaviour
 {
@@ -8,17 +7,12 @@ public class GameEventTrigger : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D col)
     {
         if (col.TryGetComponent(out PlayerInventoryInteraction playerInventoryInteraction))
-        {
             playerInventoryInteraction.PossiblyEvent = gameEvent;
-
-        }
     }
-    
+
     private void OnTriggerExit2D(Collider2D col)
     {
         if (col.TryGetComponent(out PlayerInventoryInteraction playerInventoryInteraction))
-        {
             playerInventoryInteraction.PossiblyEvent = null;
-        }
     }
 }

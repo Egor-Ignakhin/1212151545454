@@ -29,7 +29,7 @@ public class SceneLoaderService : MonoBehaviour
     }
 
     /// <summary>
-    /// Custom load
+    ///     Custom load
     /// </summary>
     public void Load()
     {

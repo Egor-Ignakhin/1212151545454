@@ -7,19 +7,17 @@ public static class InventoryData
 
     static InventoryData()
     {
-        pickedItems = new();
+        pickedItems = new Dictionary<ItemType, bool>();
 
         var values = (ItemType[])Enum.GetValues(typeof(ItemType));
-        foreach (var t in values)
-        {
-            pickedItems.Add(t, false);
-        }
+        foreach (var t in values) pickedItems.Add(t, false);
     }
-    
+
     public static void AddItem(ItemType itemType)
     {
         pickedItems[itemType] = true;
-    } 
+    }
+
     public static void RemoveItem(ItemType itemType)
     {
         pickedItems[itemType] = false;
