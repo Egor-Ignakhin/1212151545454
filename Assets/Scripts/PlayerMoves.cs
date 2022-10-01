@@ -1,50 +1,63 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
-
 
 public class PlayerMoves : MonoBehaviour
 {
-    public GameObject player;
-    public int speed = 300;
-    public int speedRotation = 2;
-    [SerializeField] private Rigidbody2D mRigidbody2D;
+    [SerializeField] private int speed = 300;
 
     private Animator anim;
 
-    void Start()
+    private void Start()
     {
         anim = gameObject.GetComponent<Animator>();
-        player = (GameObject)this.gameObject;
     }
 
-    [System.Obsolete]
-    void Update()
+    [Obsolete]
+    private void Update()
     {
         if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
         {
-            player.transform.position += player.transform.up * (speed * Time.deltaTime);
+            transform.position += transform.up * (speed * Time.deltaTime);
             anim.SetInteger("Pose", 1);
         }
 
         if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
         {
-            player.transform.position -= player.transform.up * (speed * Time.deltaTime);
+            transform.position -= transform.up * (speed * Time.deltaTime);
             anim.SetInteger("Pose", 0);
         }
 
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
-            player.transform.position -= player.transform.right * (speed * Time.deltaTime);
+            transform.position -= transform.right * (speed * Time.deltaTime);
             anim.SetInteger("Pose", 2);
-            gameObject.transform.localScale = new Vector3(-1, 1, 1);
+            transform.localScale = new Vector3(-1, 1, 1);
         }
+
         if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
-            player.transform.position += player.transform.right * (speed * Time.deltaTime);
+            transform.position += transform.right * (speed * Time.deltaTime);
             anim.SetInteger("Pose", 2);
-            gameObject.transform.localScale = new Vector3(1,1,1);
+            transform.localScale = new Vector3(1, 1, 1);
         }
+
+        GetInputFromMouse();
     }
 
+    private void GetInputFromMouse()
+    {
+        if (Input.GetMouseButton(0))
+        {
+            Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+            var direction = mousePosition - (Vector2)transform.position;
+
+            if (direction.magnitude > 1)
+                direction = direction.normalized;
+            
+            transform.position += (Vector3) direction * (speed * Time.deltaTime);
+            anim.SetInteger("Pose", 2);
+            gameObject.transform.localScale = new Vector3(1, 1, 1);
+        }
+    }
 }
