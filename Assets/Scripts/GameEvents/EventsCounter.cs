@@ -4,7 +4,7 @@ public static class EventsCounter
 {
     private static int currentEventIndex;
 
-    private const int maxEventIndex = 1;
+    public const int MaxEventIndex = 1;
     public static event Action LastEventCompleted;
 
     public static int CurrentEventIndex
@@ -12,7 +12,7 @@ public static class EventsCounter
         get => currentEventIndex;
         set
         {
-            if (value == maxEventIndex)
+            if (value == MaxEventIndex)
             {
                 LastEventCompleted?.Invoke();
                 return;
