@@ -771,6 +771,7 @@ GameObject:
   - component: {fileID: 1605604082}
   - component: {fileID: 1605604084}
   - component: {fileID: 1605604085}
+  - component: {fileID: 1605604086}
   m_Layer: 5
   m_Name: Darkness
   m_TagString: Untagged
@@ -868,7 +869,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97340017887e24b47963bb1dcf1e1351, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NewSceneName: 0
+--- !u!114 &1605604086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1605604080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79c9b2364da1864dbff24cdb7319b4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneNames:
+  - Start
+  - game
+  - BadEnd
+  - GoodEnd
+  sceneName: Start
+  loadPoint: 3
 --- !u!1 &1683399069
 GameObject:
   m_ObjectHideFlags: 0

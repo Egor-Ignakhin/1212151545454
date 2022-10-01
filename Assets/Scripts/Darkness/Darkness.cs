@@ -1,26 +1,28 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
+[RequireComponent(typeof(SceneLoaderService))]
 public class Darkness : MonoBehaviour
 {
-    [SerializeField]
-    private int NewSceneName;
     private Animator anim;
+    private static readonly int toLight = Animator.StringToHash("ToLight");
+    private static readonly int toDark = Animator.StringToHash("ToDark");
 
     private void Start()
     {
         anim = gameObject.GetComponent<Animator>();
-        anim.SetTrigger("ToLight");
+        anim.SetTrigger(toLight);
     }
+
     public void ChangeScene()
     {
-        anim.SetTrigger("ToDark");
+        GetComponent<Image>().enabled = true;
+        anim.SetTrigger(toDark);
     }
 
     public void AnimEnd()
     {
-        SceneManager.LoadScene(NewSceneName);
+        GetComponent<SceneLoaderService>().Load();
     }
 }

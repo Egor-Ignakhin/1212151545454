@@ -6,6 +6,8 @@ public class GameEvent : MonoBehaviour
     public virtual void Activate()
     {
         mGameEventTrigger.gameObject.SetActive(false);
+
+        EventsCounter.CurrentEventIndex++;
     }
   
 }
