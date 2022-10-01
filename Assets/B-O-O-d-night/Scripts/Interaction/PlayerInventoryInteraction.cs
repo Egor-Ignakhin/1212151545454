@@ -17,6 +17,11 @@ public class PlayerInventoryInteraction : MonoBehaviour
             var itemType = inventoryItem.PickUp();
             InventoryData.AddItem(itemType);
         }
+
+        if (col.TryGetComponent(out InteractableObject interactableObject))
+        {
+            interactableObject.Interact();
+        }
     }
 
     private void Update()

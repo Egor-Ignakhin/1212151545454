@@ -1,13 +1,11 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class GameEvent : MonoBehaviour
 {
-    [SerializeField] private GameEventTrigger mGameEventTrigger;
+    protected List<GameEventTrigger> triggers = new ();
 
     public virtual void Activate()
     {
-        mGameEventTrigger.gameObject.SetActive(false);
-
-        EventsCounter.CurrentEventIndex++;
     }
 }
