@@ -9,30 +9,47 @@ public class PlayerInventoryInteraction : MonoBehaviour
 
     [SerializeField] private bool inputFromKeyboard = true;
     [SerializeField] private bool inputFromMouse = true;
+    private InteractableObject interactiveObject;
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.TryGetComponent(out InventoryItem inventoryItem))
-        {
-            var itemType = inventoryItem.PickUp();
-            InventoryData.AddItem(itemType);
-        }
+        interactiveObject = null;
+        if (col.TryGetComponent(out InventoryItem inventoryItem)) AddItemInInventory(inventoryItem);
 
         if (col.TryGetComponent(out InteractableObject interactableObject))
         {
-            interactableObject.Interact();
+            if (!interactableObject.CanInteract()) return;
+            interactiveObject = interactableObject;
         }
+    }
+
+    private void AddItemInInventory(InventoryItem inventoryItem)
+    {
+        var itemType = inventoryItem.PickUp();
+        InventoryData.AddItem(itemType);
     }
 
     private void Update()
     {
-        hintText.SetText(PossiblyEvent ? "Press E to interact" : "");
+        hintText.SetText(PossiblyEvent || interactiveObject ? "Press E to interact" : "");
 
+        if (interactiveObject)
+        {
+            if (inputFromKeyboard && Input.GetKeyDown(KeyCode.E))  InteractWithObject();
+            if (inputFromMouse && Input.GetMouseButtonDown(1)) InteractWithObject();
+        }
+        
         if (PossiblyEvent)
         {
             if (inputFromKeyboard && Input.GetKeyDown(KeyCode.E)) StartPossiblyEvent();
-            if (inputFromMouse &&  Input.GetMouseButtonDown(1)) StartPossiblyEvent();
+            if (inputFromMouse && Input.GetMouseButtonDown(1)) StartPossiblyEvent();
         }
+    }
+
+    private void InteractWithObject()
+    {
+        interactiveObject.Interact();
+        interactiveObject = null;
     }
 
     private void StartPossiblyEvent()
