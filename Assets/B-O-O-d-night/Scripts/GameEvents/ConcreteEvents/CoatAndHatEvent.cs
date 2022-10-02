@@ -1,22 +1,8 @@
+using UnityEngine;
+
 public class CoatAndHatEvent : GameEvent
 {
-    private void Awake()
-    {
-        InventoryData.NewItemAdded += InventoryDataOnNewItemAdded;
-    }
-
-    private void OnDestroy()
-    {
-        InventoryData.NewItemAdded -= InventoryDataOnNewItemAdded;
-    }
-
-    private void InventoryDataOnNewItemAdded(ItemType obj)
-    {
-        if (InventoryData.HasItem(ItemType.Coat) &&
-            InventoryData.HasItem(ItemType.Hat))
-            print("on coat and hat pickup");
-    }
-
+    [SerializeField] private GameObject allClothGm;
     public override void Activate()
     {
         InventoryData.RemoveItem(ItemType.Bear);
@@ -29,5 +15,7 @@ public class CoatAndHatEvent : GameEvent
         }
 
         EventsCounter.CurrentEventIndex++;
+        
+        allClothGm.SetActive(true);
     }
 }
