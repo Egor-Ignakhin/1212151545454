@@ -7,15 +7,18 @@ public class PlayerMoves : MonoBehaviour
 
     private Animator anim;
     private static readonly int pose = Animator.StringToHash("Pose");
+    private bool motionAllowed = true;
 
     private void Start()
     {
         anim = gameObject.GetComponent<Animator>();
     }
 
-    [Obsolete]
     private void Update()
     {
+        if(!motionAllowed)
+            return;
+        
         GetInputFromKeyboard();
 
         GetInputFromMouse();
@@ -41,7 +44,7 @@ public class PlayerMoves : MonoBehaviour
 
         var vertical = direction.y;
         var horizontal = -direction.x;
-            
+
         MoveByDirection(new Vector2(horizontal, vertical));
     }
 
@@ -59,5 +62,15 @@ public class PlayerMoves : MonoBehaviour
             anim.SetInteger(pose, 2);
             transform.localScale = new Vector3(direction.x > 0 ? -1 : 1, 1, 1);
         }
+    }
+
+    public void AllowMotion()
+    {
+        motionAllowed = true;
+    }
+
+    public void ForbidMotion()
+    {
+        motionAllowed = false;
     }
 }
