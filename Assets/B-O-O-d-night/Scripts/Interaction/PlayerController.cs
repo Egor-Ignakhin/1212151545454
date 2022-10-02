@@ -9,6 +9,8 @@ internal class PlayerController : MonoBehaviour
     private Vector3 lastPreWardrobePosition;
     private float timerInWardrobe;
     public bool IsInsideWardrobe { get; set; }
+    public static bool IsCaught { get; set; }
+
     [SerializeField] private PlayerMoves playerMoves;
     [SerializeField] private SpriteRenderer playerSpriteRenderer;
     [SerializeField] private GameObject inWardrobeUIGm;

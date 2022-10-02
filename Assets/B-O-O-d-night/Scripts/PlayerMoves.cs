@@ -16,7 +16,7 @@ public class PlayerMoves : MonoBehaviour
 
     private void Update()
     {
-        if(!motionAllowed)
+        if(!motionAllowed || PlayerController.IsCaught)
             return;
         
         GetInputFromKeyboard();

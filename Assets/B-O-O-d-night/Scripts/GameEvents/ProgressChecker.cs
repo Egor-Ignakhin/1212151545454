@@ -27,6 +27,11 @@ public class ProgressChecker : MonoBehaviour
         yield return new WaitForSeconds(6f);
     }
 
+    public void MoveToBadScreen()
+    {
+        badDarkness.ChangeScene();
+    }
+
     private void OnDestroy()
     {
         EventsCounter.LastEventCompleted -= EventsCounterOnLastEventCompleted;
