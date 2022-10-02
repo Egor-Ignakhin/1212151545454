@@ -10,6 +10,7 @@ public class TenSecondsLoop : MonoBehaviour
     public static event Action OnMomeExit;
     public static float Timer { get; set; }
     [SerializeField] private GameObject momesLight;
+    [SerializeField] private GameObject openedDoor;
 
 
     private IEnumerator Start()
@@ -26,8 +27,10 @@ public class TenSecondsLoop : MonoBehaviour
                 var momeWatchingTime = 3f;
                 OnMomeEntered?.Invoke();
                 momesLight.SetActive(true);
+                openedDoor.SetActive(true);
                 yield return new WaitForSeconds(momeWatchingTime);
                 momesLight.SetActive(false);
+                openedDoor.SetActive(false);
                 OnMomeExit?.Invoke();
                 Timer = 0;
             }

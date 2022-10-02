@@ -5,6 +5,7 @@ public class OpenWindowEvent : GameEvent
 {
     [SerializeField] private List<GameEventTrigger> mGameEventTrigger = new();
     [SerializeField] private AudioSource windLoopSource;
+    [SerializeField] private SpriteRenderer closed, opened;
 
     public override void Activate()
     {
@@ -15,5 +16,7 @@ public class OpenWindowEvent : GameEvent
         EventsCounter.CurrentEventIndex++;
 
         Finished?.Invoke();
+        closed.enabled = false;
+        opened.enabled = true;
     }
 }
