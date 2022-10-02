@@ -17,12 +17,19 @@ public class ProgressChecker : MonoBehaviour
 
     private IEnumerator Finishing()
     {
-        //Set here finish coroutine
-        //yield return yourCoroutine;
-        
-        yield return null;
+        yield return StartCoroutine(Waiting());
         
         goodDarkness.ChangeScene();
+    }
+
+    private IEnumerator Waiting()
+    {
+        yield return new WaitForSeconds(6f);
+    }
+
+    public void MoveToBadScreen()
+    {
+        badDarkness.ChangeScene();
     }
 
     private void OnDestroy()
