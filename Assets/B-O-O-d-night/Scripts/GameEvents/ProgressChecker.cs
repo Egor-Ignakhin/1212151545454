@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class ProgressChecker : MonoBehaviour
@@ -11,6 +12,16 @@ public class ProgressChecker : MonoBehaviour
 
     private void EventsCounterOnLastEventCompleted()
     {
+        StartCoroutine(Finishing());
+    }
+
+    private IEnumerator Finishing()
+    {
+        //Set here finish coroutine
+        //yield return yourCoroutine;
+        
+        yield return null;
+        
         goodDarkness.ChangeScene();
     }
 
