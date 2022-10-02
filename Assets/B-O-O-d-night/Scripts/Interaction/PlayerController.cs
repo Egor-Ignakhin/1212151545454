@@ -15,6 +15,8 @@ internal class PlayerController : MonoBehaviour
     [SerializeField] private SpriteRenderer playerSpriteRenderer;
     [SerializeField] private GameObject inWardrobeUIGm;
 
+    [SerializeField] private GameObject mLight;
+    
     public void MoveInsideWardobe(Vector3 position)
     {
         lastPreWardrobePosition = transform.position;
@@ -30,6 +32,10 @@ internal class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        mLight.SetActive(true);
+        if(IsCaught || IsInsideWardrobe)
+            mLight.SetActive(false);
+        
         textMeshProUGUI.SetText(IsInsideWardrobe? "Press E to exit" : "");
         if (IsInsideWardrobe)
         {

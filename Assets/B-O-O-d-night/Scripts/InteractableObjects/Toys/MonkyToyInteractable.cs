@@ -7,23 +7,22 @@ public class MonkyToyInteractable : InteractableObject
     [SerializeField] private AudioSource monkeySource;
     [SerializeField] private AudioClip keyInsertingClip;
     [SerializeField] private AudioClip gamingClip;
-    private bool wasInteracted;
+    public bool WasInteracted { get; set; }
+    [SerializeField] private Monkey monkey;
 
     public override void Interact()
     {
         // Play sound
         monkeySource.PlayOneShot(keyInsertingClip);
 
-        // Play animation
-        // ...
-
         EventsCounter.CurrentEventIndex++;
-        wasInteracted = true;
+        WasInteracted = true;
 
         StartCoroutine(PlayerGamingClip(keyInsertingClip.length));
+        monkey.Animate();
     }
 
-    private IEnumerator PlayerGamingClip(float s)
+    public IEnumerator PlayerGamingClip(float s)
     {
         yield return new WaitForSeconds(s);
         monkeySource.PlayOneShot(gamingClip);
@@ -31,6 +30,6 @@ public class MonkyToyInteractable : InteractableObject
 
     public override bool CanInteract()
     {
-       return eventType == EventsCounter.CurrentEventType() && InventoryData.HasItem(ItemType.Key) && !wasInteracted;
+       return eventType == EventsCounter.CurrentEventType() && InventoryData.HasItem(ItemType.Key) && !WasInteracted;
     }
 }

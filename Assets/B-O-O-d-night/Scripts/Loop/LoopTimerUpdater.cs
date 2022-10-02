@@ -6,7 +6,8 @@ public class LoopTimerUpdater : MonoBehaviour
     [SerializeField] private Image circle;
     [SerializeField] private AudioSource DoorSource;
     [SerializeField] private AudioSource stepsSource;
-
+    
+    
     private void Awake()
     {
         TenSecondsLoop.ValueChanged += UpdateTimer;
