@@ -396,7 +396,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.2
+      scalar: 0.1
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -5090,3 +5090,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pt: {fileID: 5159484446136645128}
+  monkyToyInteractable: {fileID: 0}

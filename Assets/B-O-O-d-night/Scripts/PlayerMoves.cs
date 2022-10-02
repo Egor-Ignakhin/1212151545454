@@ -62,6 +62,11 @@ public class PlayerMoves : MonoBehaviour
             anim.SetInteger(pose, 2);
             transform.localScale = new Vector3(direction.x > 0 ? -1 : 1, 1, 1);
         }
+
+        if (direction.x == 0 && direction.y == 0)
+        {
+            anim.SetInteger(pose, 3);
+        }
     }
 
     public void AllowMotion()
