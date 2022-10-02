@@ -6,15 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Start.unity
+    path: Assets/B-O-O-d-night/Scenes/Start.unity
     guid: caea54eaed2b3d542857d798c610c569
   - enabled: 1
-    path: Assets/Scenes/game.unity
+    path: Assets/B-O-O-d-night/Scenes/game.unity
     guid: 69faa6d352e668c49a000900baa1269c
   - enabled: 1
-    path: Assets/Scenes/BadEnd.unity
+    path: Assets/B-O-O-d-night/Scenes/BadEnd.unity
     guid: d4610ab694c60c14ab035b187bbdaa13
   - enabled: 1
-    path: Assets/Scenes/GoodEnd.unity
+    path: Assets/B-O-O-d-night/Scenes/GoodEnd.unity
     guid: d9ae8594118271b42adbcdfdb6c1f56b
   m_configObjects: {}
