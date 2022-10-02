@@ -5,6 +5,7 @@ using UnityEngine;
 public class TenSecondsLoop : MonoBehaviour
 {
     public static event Action ValueChanged;
+    public static event Action NewCycle;
     public static float Timer { get; set; }
 
     private IEnumerator Start()
@@ -17,7 +18,7 @@ public class TenSecondsLoop : MonoBehaviour
 
             if (Timer > 10f)
             {
-                print("new cycle");
+                NewCycle?.Invoke();
                 Timer = 0;
             }
 
