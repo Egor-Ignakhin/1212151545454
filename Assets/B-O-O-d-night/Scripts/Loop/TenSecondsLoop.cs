@@ -11,7 +11,7 @@ public class TenSecondsLoop : MonoBehaviour
     public static float Timer { get; set; }
     [SerializeField] private GameObject momesLight;
     [SerializeField] private GameObject openedDoor;
-
+    [SerializeField] private GameObject closedDoor;
 
     private IEnumerator Start()
     {
@@ -28,9 +28,11 @@ public class TenSecondsLoop : MonoBehaviour
                 OnMomeEntered?.Invoke();
                 momesLight.SetActive(true);
                 openedDoor.SetActive(true);
+                closedDoor.SetActive(false);
                 yield return new WaitForSeconds(momeWatchingTime);
                 momesLight.SetActive(false);
                 openedDoor.SetActive(false);
+                closedDoor.SetActive(true);
                 OnMomeExit?.Invoke();
                 Timer = 0;
             }

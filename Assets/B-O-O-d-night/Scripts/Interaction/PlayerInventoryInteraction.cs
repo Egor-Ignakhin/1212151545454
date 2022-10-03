@@ -14,7 +14,8 @@ public class PlayerInventoryInteraction : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D col)
     {
         interactiveObject = null;
-        if (col.TryGetComponent(out InventoryItem inventoryItem)) AddItemInInventory(inventoryItem);
+        if (col.TryGetComponent(out InventoryItem inventoryItem) && inventoryItem.CanGet())
+            AddItemInInventory(inventoryItem);
 
         if (col.TryGetComponent(out InteractableObject interactableObject))
         {
