@@ -8,10 +8,15 @@ public class TenSecondsLoop : MonoBehaviour
     public static event Action NewCycle;
     public static event Action OnMomeEntered;
     public static event Action OnMomeExit;
-    public static float Timer { get; set; }
+    public static float Timer { get; set; } = 0;
     [SerializeField] private GameObject momesLight;
     [SerializeField] private GameObject openedDoor;
     [SerializeField] private GameObject closedDoor;
+
+    private void OnEnable()
+    {
+        Timer = 0;
+    }
 
     private IEnumerator Start()
     {

@@ -4,23 +4,23 @@ public class TaskCompleteSoundsPlayer : MonoBehaviour
 {
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private Animator booAnimator;
-    private static readonly int boo = Animator.StringToHash("Boo");
     [SerializeField] private ParticleSystem ps;
+    private static readonly int boo = Animator.StringToHash("Boo");
 
-    private void Awake()
+    private void OnEnable()
     {
         EventsCounter.EventChanged += EventsCounterOnEventChanged;
     }
 
-    public void EventsCounterOnEventChanged()
+    private void EventsCounterOnEventChanged()
     {
         ps.Play();
         audioSource.Play();
         booAnimator.SetTrigger(boo);
     }
 
-    private void OnDestroy()
+    private void OnDisable()
     {
-        EventsCounter.EventChanged += EventsCounterOnEventChanged;
+        EventsCounter.EventChanged -= EventsCounterOnEventChanged;
     }
 }

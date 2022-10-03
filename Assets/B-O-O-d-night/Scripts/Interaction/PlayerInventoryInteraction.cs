@@ -36,14 +36,14 @@ public class PlayerInventoryInteraction : MonoBehaviour
 
         if (interactiveObject)
         {
-            if (inputFromKeyboard && Input.GetKeyDown(KeyCode.E))  InteractWithObject();
-            if (inputFromMouse && Input.GetMouseButtonDown(1)) InteractWithObject();
+            if (inputFromKeyboard && Input.GetKeyDown(KeyCode.E)) InteractWithObject();
+            if (inputFromMouse && (Input.GetMouseButtonDown(1) || Input.touchCount > 1)) InteractWithObject();
         }
-        
+
         if (PossiblyEvent)
         {
             if (inputFromKeyboard && Input.GetKeyDown(KeyCode.E)) StartPossiblyEvent();
-            if (inputFromMouse && Input.GetMouseButtonDown(1)) StartPossiblyEvent();
+            if (inputFromMouse && (Input.GetMouseButtonDown(1) || Input.touchCount > 1)) StartPossiblyEvent();
         }
     }
 
@@ -55,8 +55,6 @@ public class PlayerInventoryInteraction : MonoBehaviour
 
     private void StartPossiblyEvent()
     {
-        print("Event activated" + PossiblyEvent);
-
         PossiblyEvent.Activate();
     }
 }

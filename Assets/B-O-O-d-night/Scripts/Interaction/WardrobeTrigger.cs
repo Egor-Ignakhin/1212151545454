@@ -6,6 +6,7 @@ public class WardrobeTrigger : MonoBehaviour
     [SerializeField] private WardrobeController wardrobeController;
     private bool isControllerHere;
     [SerializeField] private TextMeshProUGUI textMeshProUGUI;
+    [SerializeField] private TextMeshProUGUI task2;
 
     private void OnTriggerEnter2D(Collider2D col)
     {
@@ -19,11 +20,12 @@ public class WardrobeTrigger : MonoBehaviour
 
     private void FixedUpdate()
     {
-        textMeshProUGUI.SetText(isControllerHere ? "Press E to enter" : "");
+        textMeshProUGUI.SetText(isControllerHere && string.IsNullOrEmpty(task2.text) ? "Press E to enter" : "");
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && isControllerHere) wardrobeController.MovePlayerInside();
+        if ((Input.GetKeyDown(KeyCode.E) ||Input.touchCount > 1) && isControllerHere && string.IsNullOrEmpty(task2.text)) wardrobeController
+            .MovePlayerInside();
     }
 }

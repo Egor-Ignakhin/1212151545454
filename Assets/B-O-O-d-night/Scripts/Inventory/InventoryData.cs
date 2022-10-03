@@ -14,6 +14,12 @@ public static class InventoryData
         foreach (var t in values) pickedItems.Add(t, false);
     }
 
+    public static void FillInventoryOnStarting()
+    {
+        var values = (ItemType[])Enum.GetValues(typeof(ItemType));
+        foreach (var t in values) pickedItems[t] = false;
+    }
+
     public static void AddItem(ItemType itemType)
     {
         pickedItems[itemType] = true;

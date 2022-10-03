@@ -390,7 +390,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DefaultResolution: {x: 960, y: 580}
-  WidthOrHeight: 0.5
+  WidthOrHeight: 0.6
 --- !u!1 &875314001
 GameObject:
   m_ObjectHideFlags: 0

@@ -24,7 +24,7 @@ public class ProgressChecker : MonoBehaviour
 
     private IEnumerator Waiting()
     {
-        yield return new WaitForSeconds(6f);
+        yield return new WaitForSeconds(4f);
     }
 
     public void MoveToBadScreen()

@@ -15,6 +15,8 @@ public static class EventsCounter
         {
             if (value == maxEventIndex)
             {
+                currentEventIndex = 0;
+
                 LastEventCompleted?.Invoke();
                 return;
             }

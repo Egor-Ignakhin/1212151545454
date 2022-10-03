@@ -3,10 +3,10 @@ using UnityEngine;
 
 public class PlayerMoves : MonoBehaviour
 {
+    private static readonly int pose = Animator.StringToHash("Pose");
     [SerializeField] private int speed = 300;
 
     private Animator anim;
-    private static readonly int pose = Animator.StringToHash("Pose");
     private bool motionAllowed = true;
 
     private void Start()
