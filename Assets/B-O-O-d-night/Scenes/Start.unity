@@ -198,7 +198,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9950f03ab6139b4aa118a1cbf654b52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DefaultResolution: {x: 960, y: 580}
+  DefaultResolution: {x: 960, y: 540}
   WidthOrHeight: 0.5
 --- !u!114 &166183934
 MonoBehaviour:
@@ -914,7 +914,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 55
 --- !u!114 &1718394391
 MonoBehaviour:
   m_ObjectHideFlags: 0
