@@ -55,6 +55,16 @@ internal class PlayerController : MonoBehaviour
         }
     }
 
+    public void ButtonClickCheck()
+    {
+        if (IsInsideWardrobe)
+        {
+            if(timerInWardrobe > 1f)
+            {
+                MoveOutsideFromWardrobe();
+            }
+        }
+        }
     private void MoveOutsideFromWardrobe()
     {
         transform.position = lastPreWardrobePosition;

@@ -46,7 +46,18 @@ public class PlayerInventoryInteraction : MonoBehaviour
             if (inputFromMouse && (Input.GetMouseButtonDown(1) || Input.touchCount > 1)) StartPossiblyEvent();
         }
     }
+    public void ButtonClickCheck()
+    {
+        if (interactiveObject)
+        {
+            InteractWithObject();
+        }
 
+        if (PossiblyEvent)
+        {
+         StartPossiblyEvent();
+        }
+    }
     private void InteractWithObject()
     {
         interactiveObject.Interact();

@@ -23,7 +23,13 @@ public class WardrobeTrigger : MonoBehaviour
         textMeshProUGUI.SetText(isControllerHere && string.IsNullOrEmpty(task2.text) ? "Press E to enter" : "");
     }
 
-    private void Update()
+    public void ButtonClickCheck()
+    {
+        if ( isControllerHere && string.IsNullOrEmpty(task2.text)) wardrobeController
+             .MovePlayerInside();
+    }
+
+        private void Update()
     {
         if ((Input.GetKeyDown(KeyCode.E) ||Input.touchCount > 1) && isControllerHere && string.IsNullOrEmpty(task2.text)) wardrobeController
             .MovePlayerInside();
